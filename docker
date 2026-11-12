@@ -1,0 +1,21 @@
+1)
+
+  docker --version
+  docker --help
+  sudo apt update
+  sudo apt install docker.io -y
+  sudo service docker start
+  sudo docker --version
+  sudo docker pull ubuntu
+  sudo docker container run -d --name ubuntu-test ubuntu sleep infinity
+  sudo docker container ls
+  sudo docker exec -it ubuntu-test bash
+  ps -ef
+  exit
+  sudo docker run -d -p 8080:80 --name nginx nginx
+  sudo docker container ls
+  sudo docker run -d -p 8081:27017 --name mongo mongo:4.4
+    (sudo docker container run -d --name mongodb -p 27017:27017 mongo)
+  sudo docker container ls
+    sudo docker container stop nginx mongo ubuntu-test
+  
