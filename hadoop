@@ -1,0 +1,26 @@
+Microsoft Windows [Version 10.0.26300.9818]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\MONIKA SRI>wsl -d Ubuntu 
+
+monika@DESKTOP-LIQMK29:/mnt/c/Users/MONIKA SRI$ sudo systemctl enable --now docker
+
+[sudo: authenticate] Password:
+monika@DESKTOP-LIQMK29:/mnt/c/Users/MONIKA SRI$ sudo docker pull apache/hadoop:3.5.0
+
+ 
+monika@DESKTOP-LIQMK29:/mnt/c/Users/MONIKA SRI$ mkdir -p ~/hadoop/input
+
+monika@DESKTOP-LIQMK29:/mnt/c/Users/MONIKA SRI$ echo "hello hadoop" > ~/hadoop/input/file.txt
+
+monika@DESKTOP-LIQMK29:/mnt/c/Users/MONIKA SRI$ sudo chmod -R 777 ~/hadoop
+
+ 
+monika@DESKTOP-LIQMK29:/mnt/c/Users/MONIKA SRI$ sudo docker run --rm -v ~/hadoop:/work apache/hadoop:3.5.0 bash -c 'hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.5.0.jar wordcount /work/input /work/output'
+
+ 
+monika@DESKTOP-LIQMK29:/mnt/c/Users/MONIKA SRI$ cat ~/hadoop/output/part-r-00000
+hadoop  1
+hello   1
+monika@DESKTOP-LIQMK29:/mnt/c/Users/MONIKA SRI$ sudo rm -rf ~/hadoop/output
+monika@DESKTOP-LIQMK29:/mnt/c/Users/MONIKA SRI$
