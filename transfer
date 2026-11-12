@@ -1,0 +1,25 @@
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" natnetwork add --netname CloudNet --network "192.168.50.0/24" --enable --dhcp on
+
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" natnetwork list
+
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" modifyvm "Ubuntu" --nic1 natnetwork --nat-network1 CloudNet
+
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" modifyvm "Ubuntu-VM2" --nic1 natnetwork --nat-network1 CloudNet
+
+ip addr
+
+ip addr
+
+ping -c 4 192.168.50.5
+
+sudo apt update
+sudo apt install openssh-server -y
+sudo systemctl enable --now ssh
+sudo systemctl status ssh
+
+echo "This file is transferred from VM1 to VM2" > sample.txt
+cat sample.txt
+scp sample.txt username@192.168.50.5:/home/username/
+
+ls -l sample.txt
+cat sample.txt
